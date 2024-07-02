@@ -1,4 +1,6 @@
 <script setup>
+import Copy from './Copy.vue';
+
 import {reactive, ref} from 'vue';
 import axios from 'axios';
 
@@ -9,6 +11,7 @@ const errors = reactive([]);
 const makeItShort = () => {
     axios.post('api/encode', { url: url.value })
         .then(response => {
+            errors.value = []
             shortUrl.value = response.data.data.short_url;
         })
         .catch(error => {
@@ -35,8 +38,8 @@ const makeItShort = () => {
         <div v-if="errors.length" class="mt-2">
             <span class="text-red-400">{{errors[0].url[0]}}</span>
         </div>
-        <div v-if="shortUrl" class="mt-2">
-            <h3>Your new short URL is: {{ shortUrl }}</h3>
+        <div v-if="shortUrl" class="mt-2 text-xl">
+            Your new short URL is: <copy>{{ shortUrl }}</copy>
         </div>
     </div>
 </template>
