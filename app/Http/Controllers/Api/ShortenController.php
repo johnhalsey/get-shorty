@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Url;
 use App\Services\UrlService;
-use Illuminate\Http\JsonResponse;
+use App\Http\Resources\UrlResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\EncodeUrlRequest;
@@ -16,26 +16,22 @@ class ShortenController extends Controller
     {
     }
 
-    public function encode(EncodeUrlRequest $request): JsonResponse
+    public function encode(EncodeUrlRequest $request): UrlResource
     {
-        $url = $this->urlService->generateUniqueUrl();
-        Url::create([
+        $uniqueShort = $this->urlService->generateUniqueUrl();
+        $url = Url::create([
             'long_url' => Crypt::encrypt($request->input('url')),
-            'short_url' => $url
+            'short_url' => $uniqueShort
         ]);
 
-        return response()->json([
-            'short_url' => $url
-        ]);
+        return new UrlResource($url);
     }
 
-    public function decode(DecodeUrlRequest $request): JsonResponse
+    public function decode(DecodeUrlRequest $request): UrlResource
     {
         $url = Url::where('short_url', $request->input('short_url'))
             ->firstOrFail();
 
-        return response()->json([
-            'long_url' => Crypt::decrypt($url->long_url)
-        ]);
+        return new UrlResource($url);
     }
 }
