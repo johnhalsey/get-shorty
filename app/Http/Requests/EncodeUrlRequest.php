@@ -22,7 +22,7 @@ class EncodeUrlRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url' => 'required|url|max:255'
+            'url' => ['required', 'url']
         ];
     }
 }
