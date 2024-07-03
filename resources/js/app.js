@@ -3,10 +3,12 @@ import '../css/app.css';
 
 import { createApp } from "vue";
 
-import Shortener from "./Components/Shortener.vue";
+import Encode from "./Components/Encode.vue";
+import Decode from "./Components/Decode.vue";
 
 const app = createApp()
 
-app.component('shortner', Shortener)
+app.component('encode', Encode)
+app.component('decode', Decode)
 
 app.mount('#app')

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Url;
+use Illuminate\Support\Str;
 use App\Services\UrlService;
 use App\Http\Resources\UrlResource;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\EncodeUrlRequest;
@@ -29,9 +31,13 @@ class ShortenController extends Controller
 
     public function decode(DecodeUrlRequest $request): UrlResource
     {
-        $url = Url::where('short_url', $request->input('short_url'))
-            ->firstOrFail();
+        Log::info($request->input('url'));
+        Log::info(url());
+        $short = Str::after($request->input('url'), url());
+        Log::info($short);
+//        $url = Url::where('short_url', $short)
+//            ->firstOrFail();
 
-        return new UrlResource($url);
+//        return new UrlResource($url);
     }
 }

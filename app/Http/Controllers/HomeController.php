@@ -8,6 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        return view('encode');
+    }
+
+    public function decode()
+    {
+        return view('decode');
     }
 }

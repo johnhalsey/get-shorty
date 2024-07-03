@@ -22,7 +22,7 @@ class DecodeUrlRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'short_url' => ['required', 'string', 'max:255']
+            'url' => ['required', 'string', 'max:255']
         ];
     }
 }

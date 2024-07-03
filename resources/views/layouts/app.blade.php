@@ -19,7 +19,18 @@
 <body class="h-svh">
 <div id="app"
      class="h-full">
-    @yield('content')
+    <div class="container mx-auto flex justify-end">
+        <div class="flex">
+            <a href="/" class="mr-5 py-2 text-blue-400 hover:text-blue-600 cursor-pointer pr-5 border-r">Get a new shorty</a>
+            <a href="decode/url" class="py-2 text-blue-400 hover:text-blue-600 cursor-pointer">See my long url</a>
+        </div>
+    </div>
+
+    <div class="container mx-auto flex h-full">
+        <div class="self-center w-full">
+            @yield('content')
+        </div>
+    </div>
 </div>
 </body>
 </html>

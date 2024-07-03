@@ -1,18 +1,17 @@
 <script setup>
-import Copy from './Copy.vue';
 
 import {reactive, ref} from 'vue';
 import axios from 'axios';
 
 const url = ref('');
-const shortUrl = ref('');
+const longUrl = ref('');
 const errors = reactive([]);
 
-const makeItShort = () => {
-    axios.post('api/encode', { url: url.value })
+const makeItLong = () => {
+    axios.post('api/decode', { url: url.value })
         .then(response => {
             errors.value = []
-            shortUrl.value = response.data.data.short_url;
+            longUrl.value = response.data.data.long_url;
         })
         .catch(error => {
             errors.push(error.response.data.errors);
@@ -27,19 +26,19 @@ const makeItShort = () => {
             <input type="text"
                    class="p-5 w-full border"
                    v-model="url"
-                   placeholder="Paste your long URL here"
+                   placeholder="Paste your shorty URL here"
             />
             <button class="h-full ml-2 bg-blue-300 hover:bg-blue-500 w-40 px-3 rounded content-center"
-                    @click="makeItShort"
+                    @click="makeItLong"
             >
-                <span>Get Shorty</span>
+                <span>Get Long Url</span>
             </button>
         </div>
         <div v-if="errors.length" class="mt-2">
             <span class="text-red-400">{{errors[0].url[0]}}</span>
         </div>
-        <div v-if="shortUrl" class="mt-2 text-xl">
-            Your new short URL is: <copy>{{ shortUrl }}</copy>
+        <div v-if="longUrl" class="mt-2 text-xl">
+            Your original long URL is: <a :href="longUrl" class="" >{{ longUrl }}</a>
         </div>
     </div>
 </template>
