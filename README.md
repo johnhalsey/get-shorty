@@ -6,6 +6,7 @@ URL shortener application built with Laravel 11 with Vue.js 3.0 and Tailwind CSS
 - Copy `.env.example` to `.env`
 - Update `.env` with your database credentials
 - Run `composer install`
+- Run `php artisan key:generate`
 - Run `npm install`
 - Run `npm run dev`
 - Run `php artisan serve`
