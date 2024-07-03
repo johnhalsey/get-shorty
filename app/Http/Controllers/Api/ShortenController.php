@@ -29,7 +29,6 @@ class ShortenController extends Controller
 
     public function decode(DecodeUrlRequest $request): UrlResource
     {
-        // last 6 characters of $request->input('url')
         $short = Str::substr($request->input('url'), -6);
         $url = Url::query()
             ->where('short_url', $short)
