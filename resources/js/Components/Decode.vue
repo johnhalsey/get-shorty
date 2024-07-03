@@ -1,20 +1,20 @@
 <script setup>
 
-import {reactive, ref} from 'vue';
+import {ref} from 'vue';
 import axios from 'axios';
 
 const url = ref('');
 const longUrl = ref('');
-const errors = reactive([]);
+const errors = ref([]);
 
 const makeItLong = () => {
-    axios.post('api/decode', { url: url.value })
+    errors.value = []
+    axios.post('/api/decode', { url: url.value })
         .then(response => {
-            errors.value = []
             longUrl.value = response.data.data.long_url;
         })
         .catch(error => {
-            errors.push(error.response.data.errors);
+            errors.value.push(error.response.data.errors);
         });
 }
 

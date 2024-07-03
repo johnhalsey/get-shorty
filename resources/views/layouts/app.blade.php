@@ -22,7 +22,7 @@
     <div class="container mx-auto flex justify-end">
         <div class="flex">
             <a href="/" class="mr-5 py-2 text-blue-400 hover:text-blue-600 cursor-pointer pr-5 border-r">Get a new shorty</a>
-            <a href="decode/url" class="py-2 text-blue-400 hover:text-blue-600 cursor-pointer">See my long url</a>
+            <a href="/decode/url" class="py-2 text-blue-400 hover:text-blue-600 cursor-pointer">See my long url</a>
         </div>
     </div>
 

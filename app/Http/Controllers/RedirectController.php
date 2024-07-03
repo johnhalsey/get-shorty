@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Url;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 
 class RedirectController extends Controller
 {
     public function redirect(Request $request, $short_url): \Illuminate\Http\RedirectResponse
     {
-        $url = Url::where('short_url', url($short_url))
+        $url = Url::where('short_url', $short_url)
             ->firstOrFail();
 
-        return redirect()->away(Crypt::decrypt($url->long_url));
+        return redirect($url->long_url);
     }
 }

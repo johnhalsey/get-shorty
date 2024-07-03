@@ -17,7 +17,7 @@ class UrlResource extends JsonResource
     {
         return [
             'short_url' => url($this->short_url),
-            'long_url'  => Crypt::decrypt($this->long_url),
+            'long_url'  => $this->long_url,
         ];
     }
 }

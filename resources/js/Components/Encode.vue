@@ -1,6 +1,6 @@
 <script setup>
 
-import {reactive, ref} from 'vue';
+import {ref} from 'vue';
 import axios from 'axios';
 
 const url = ref('');
@@ -9,7 +9,7 @@ const errors = ref([]);
 
 const makeItShort = () => {
     errors.value = []
-    axios.post('api/encode', { url: url.value })
+    axios.post('/api/encode', { url: url.value })
         .then(response => {
             shortUrl.value = response.data.data.short_url;
         })

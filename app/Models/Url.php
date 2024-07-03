@@ -13,4 +13,10 @@ class Url extends Model
         'long_url',
         'short_url'
     ];
+
+    protected function casts() {
+        return [
+            'long_url' => 'encrypted',
+        ];
+    }
 }
