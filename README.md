@@ -1,5 +1,5 @@
 # Get Shorty
-URL shortener application built with Laravel 11 with Vue.js 3.0 and Tailwind CSS 2.0.
+URL shortener application built with Laravel 11 with Vue.js 3.4 and TailwindCSS 3.4.
 
 ## Local Development
 - Clone this repository
