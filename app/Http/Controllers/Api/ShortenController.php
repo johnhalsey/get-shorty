@@ -20,8 +20,8 @@ class ShortenController extends Controller
     {
         $uniqueShort = $this->urlService->generateUniqueUrl();
         $url = Url::create([
-            'long_url' => $request->input('url'),
-            'short_url' => $uniqueShort
+            'long_url'  => $request->input('url'),
+            'short_url' => $uniqueShort,
         ]);
 
         return new UrlResource($url);
