@@ -9,12 +9,14 @@ const errors = ref([]);
 
 const makeItLong = () => {
     errors.value = []
-    axios.post('/api/decode', { url: url.value })
+    axios.get('/api/decode', {params:{ url: url.value }})
         .then(response => {
             longUrl.value = response.data.data.long_url;
         })
         .catch(error => {
-            errors.value.push(error.response.data.errors);
+            if(error.response.status == 404) {
+                errors.value.push({'url': ['We could not find that shorty URL']});
+            }
         });
 }
 

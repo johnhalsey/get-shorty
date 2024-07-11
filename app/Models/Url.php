@@ -9,6 +9,8 @@ class Url extends Model
 {
     use HasFactory;
 
+    const DEFAULT_LENGTH = 6;
+
     protected $fillable = [
         'long_url',
         'short_url'

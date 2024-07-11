@@ -7,9 +7,11 @@ use Illuminate\Support\Str;
 
 class UrlService
 {
-    public function generateUniqueUrl($length = 6): string
+
+
+    public function generateUniqueUrl(int $length): string
     {
-        $url = Str::lower(substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length));
+        $url = Str::lower(Str::random($length));
         if (Url::where('short_url', $url)->exists()) {
             return $this->generateUniqueUrl();
         }
