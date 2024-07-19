@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Url;
 use App\Services\UrlService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,7 +23,7 @@ class UrlFactory extends Factory
 
         return [
             'long_url' => $this->faker->url,
-            'short_url' => $service->generateUniqueUrl(),
+            'short_url' => $service->generateUniqueUrl(Url::DEFAULT_LENGTH),
         ];
     }
 }

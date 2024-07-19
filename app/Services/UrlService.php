@@ -7,8 +7,6 @@ use Illuminate\Support\Str;
 
 class UrlService
 {
-
-
     public function generateUniqueUrl(int $length): string
     {
         $url = Str::lower(Str::random($length));

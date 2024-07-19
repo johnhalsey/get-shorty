@@ -41,7 +41,9 @@ class ShortenControllerTest extends TestCase
             'long_url' => $longUrl
         ]);
 
-        $response = $this->postJson('/api/decode', [
+        $response = $this->json(
+            'GET',
+            '/api/decode', [
             'url' => url($url->short_url)
         ]);
 
