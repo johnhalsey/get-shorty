@@ -11,8 +11,7 @@ class UrlServiceTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function it_will_generate_a_unique_short_url()
+    public function test_it_will_generate_a_unique_short_url()
     {
         $urlService = new UrlService();
 

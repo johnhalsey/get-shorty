@@ -9,8 +9,7 @@ class EncodeUrlRequestTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function url_is_required()
+    public function test_url_is_required()
     {
         $this->postJson('/api/encode', [
             'url' => ''
@@ -21,8 +20,7 @@ class EncodeUrlRequestTest extends TestCase
             ]);
     }
 
-    /** @test */
-    public function url_must_be_valid_url()
+    public function test_url_must_be_valid_url()
     {
         $this->postJson('/api/encode', [
             'url' => 123

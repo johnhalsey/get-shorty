@@ -10,8 +10,7 @@ class ShortenControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function anon_can_shorten_a_long_url()
+    public function test_anon_can_shorten_a_long_url()
     {
         $longUrl = 'https://www.batmanandrobin.com/this-is-a-long-url-that-needs-to-be-shortened?bulter-alfred';
 
@@ -32,8 +31,7 @@ class ShortenControllerTest extends TestCase
         $this->assertSame(url($url->short_url), $jsonData['short_url']);
     }
 
-    /** @test */
-    public function anon_can_get_original_long_url()
+    public function test_anon_can_get_original_long_url()
     {
         $longUrl = 'https://www.batmanandrobin.com/this-is-a-long-url-that-needs-to-be-shortened?bulter-alfred';
 
