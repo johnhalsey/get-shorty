@@ -9,8 +9,7 @@ class HomeControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function anon_can_get_to_the_home_encode_page(): void
+    public function test_anon_can_get_to_the_home_encode_page(): void
     {
         $response = $this->get('/');
 
@@ -18,8 +17,7 @@ class HomeControllerTest extends TestCase
             ->assertViewIs('encode');
     }
 
-    /** @test */
-    public function anon_can_get_to_the_decode_page(): void
+    public function test_anon_can_get_to_the_decode_page(): void
     {
         $response = $this->get('/decode/url');
 

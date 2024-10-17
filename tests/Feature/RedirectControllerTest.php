@@ -10,8 +10,7 @@ class RedirectControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function anon_will_get_redirected_to_original_long_url()
+    public function test_anon_will_get_redirected_to_original_long_url()
     {
         $url = Url::factory()->create();
 
